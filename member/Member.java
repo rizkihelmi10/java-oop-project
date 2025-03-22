@@ -8,12 +8,18 @@ import java.util.List;
 import book.Book;
 
 public class Member {
-    private int memberId;
-    private String name;
-    private List<Book> borrowedBooks;
+    protected int memberId;
+    protected String name;
+    protected List<Book> borrowedBooks;
+
+    public Member(int memberId, String name, List<Book> borrowedBooks) {
+        this.memberId = memberId;
+        this.name = name;
+        this.borrowedBooks = borrowedBooks;
+    }
 
     public void borrowBook(Book book) {
-        if (book.availableCopies > 0) {
+        if (book.getAvailableCopies() > 0) {
             borrowedBooks.add(book);
             book.borrowBook();
             System.out.println("Book borrowed successfully.");
@@ -34,6 +40,11 @@ public class Member {
 
     public String toString() {
         return "Member ID: " + memberId + ", Name: " + name;
+    }
+
+    public void displayInfo() {
+        System.out.println("Member ID: " + memberId + ", Name: " + name);
+        System.out.println("Borrowed Books: " + borrowedBooks.size());
     }
 
 }

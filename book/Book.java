@@ -9,7 +9,7 @@ public class Book {
     private int bookId;
     private String title;
     private String author;
-    public int availableCopies;
+    private int availableCopies;
 
     public Book(int bookId, String title, String author, int availableCopies) {
         this.bookId = bookId;
@@ -21,20 +21,36 @@ public class Book {
     public void borrowBook() {
         if (availableCopies > 0) {
             availableCopies--;
-            System.out.println("Book borrowed successfully.");
-        } else {
-            System.out.println("Sorry, the book is not available.");
         }
     }
 
     public void returnBook() {
         availableCopies++;
-        System.out.println("Book returned successfully.");
     }
 
+    public int getBookId() {
+        return bookId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getAvailableCopies() {
+        return availableCopies;
+    }
+
+    @Override
     public String toString() {
-        return "Book ID: " + bookId + ", Title: " + title + ", Author: " + author + ", Available Copies: "
-                + availableCopies;
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", availableCopies=" + availableCopies +
+                '}';
     }
-
 }
